@@ -1,0 +1,15 @@
+{
+  "name": "bootcamp-gostack-desafio-01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tukno/bootcamp-gostack-desafio-01.git",
+  "author": "tukno <oliveiradavid007@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
+  }
+}
