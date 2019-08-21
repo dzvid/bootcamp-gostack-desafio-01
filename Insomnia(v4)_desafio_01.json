@@ -1,0 +1,181 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2019-08-21T06:20:03.922Z",
+  "__export_source": "insomnia.desktop.app:v6.6.2",
+  "resources": [
+    {
+      "_id": "req_daf93b528fd549f89e8ccd966943d280",
+      "authentication": {},
+      "body": {},
+      "created": 1566345674790,
+      "description": "",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1566345674790,
+      "method": "GET",
+      "modified": 1566345685453,
+      "name": "Listagem de todos  os projetos",
+      "parameters": [],
+      "parentId": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/projects",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "created": 1566339984787,
+      "description": "",
+      "modified": 1566339984787,
+      "name": "Desafio_01",
+      "parentId": null,
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_34ea3aa65ab74e009ca2ba5304481d3c",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"id\": \"0\",\n\t\"title\": \"Middleware local funcionando\"\n}"
+      },
+      "created": 1566344669252,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_fa05de28c3df4e61b560c6ee5f954754",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1566344669252,
+      "method": "POST",
+      "modified": 1566367157003,
+      "name": "Criar um projeto",
+      "parameters": [],
+      "parentId": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/projects",
+      "_type": "request"
+    },
+    {
+      "_id": "req_625e7479a12e4d64b5d7f6035226fd59",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Implementar Tindev\"\n}"
+      },
+      "created": 1566350190524,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_a82c1fb401c44e97815e5773eedd045e",
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "id": "pair_98d9ac27919d4625985ed1c44d903e84",
+          "name": "",
+          "value": ""
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1566344669227,
+      "method": "POST",
+      "modified": 1566367337596,
+      "name": "Criar uma tarefa num projeto",
+      "parameters": [],
+      "parentId": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/projects/1/tasks",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2c076a1987564e0faf3bca6514943a78",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Rocketseat Omnistack 8\"\n}"
+      },
+      "created": 1566346807837,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_207472c9c2844ed2bba9c40186e37e57",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1566344669202,
+      "method": "PUT",
+      "modified": 1566367348955,
+      "name": "Editar titulo de um projeto",
+      "parameters": [],
+      "parentId": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/projects/1",
+      "_type": "request"
+    },
+    {
+      "_id": "req_168a260899594753839b3ce4278c4bdb",
+      "authentication": {},
+      "body": {},
+      "created": 1566348817200,
+      "description": "",
+      "headers": [],
+      "isPrivate": false,
+      "metaSortKey": -1566344669152,
+      "method": "DELETE",
+      "modified": 1566367358163,
+      "name": "Deleta um projeto",
+      "parameters": [],
+      "parentId": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ base_url  }}/projects/0",
+      "_type": "request"
+    },
+    {
+      "_id": "env_178a1b9fe1febc4854c34fc0561fc1ab3d7f6da4",
+      "color": null,
+      "created": 1566339984862,
+      "data": { "base_url": "http://localhost:3000" },
+      "dataPropertyOrder": { "&": ["base_url"] },
+      "isPrivate": false,
+      "metaSortKey": 1566339984862,
+      "modified": 1566344774703,
+      "name": "Base Environment",
+      "parentId": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_178a1b9fe1febc4854c34fc0561fc1ab3d7f6da4",
+      "cookies": [],
+      "created": 1566339984864,
+      "modified": 1566339984864,
+      "name": "Default Jar",
+      "parentId": "wrk_928ee06d186f4be8a8b1ccfc63912a9c",
+      "_type": "cookie_jar"
+    }
+  ]
+}
