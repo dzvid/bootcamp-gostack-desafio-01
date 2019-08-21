@@ -18,7 +18,7 @@ Essa aplicação será utilizada para armazenar projetos e suas tarefas.
 
 ### Exemplo
 
-Se eu chamar a rota `POST /projects` repassando:
+Criando um novo projeto chamando a rota`POST /projects` repassando:
 
 ```js
 {
@@ -27,7 +27,7 @@ Se eu chamar a rota `POST /projects` repassando:
 }
 ```
 
-e após isto, chamar a rota `POST /projects/1/tasks` com:
+e após isto, podemos inserir uma tarefa no projeto criado, para isto chamamos a rota `POST /projects/1/tasks` repassando:
 
 ```js
 {
