@@ -40,7 +40,7 @@
       "authentication": {},
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"id\": \"0\",\n\t\"title\": \"Middleware local funcionando\"\n}"
+        "text": "{\n\t\"id\": \"0\",\n\t\"title\": \"Novo projeto\"\n}"
       },
       "created": 1566344669252,
       "description": "",
@@ -71,7 +71,7 @@
       "authentication": {},
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"title\": \"Implementar Tindev\"\n}"
+        "text": "{\n\t\"title\": \"Nova tarefa\"\n}"
       },
       "created": 1566350190524,
       "description": "",
