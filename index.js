@@ -24,7 +24,62 @@ server.use((req, res, next) => {
   return next();
 });
 
-//ROTAS
+//Verifica se o id existe na lista de projetos
+/**
+ * Um middleware local que será utilizado em todas rotas que recebem o {id} do projeto
+ * nos parâmetros da URL (rota) que verifica se o projeto com aquele {id} existe.
+ * Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente.
+ * @param  {Number} req.params.id {id} de um projeto
+ * @return {JSON}      Retorna uma mensagem de erro informando que {id} não existe
+ */
+function checkProjectExists(req, res, next) {
+  const { id } = req.params;
+  const project = projects.find(project => project.id === id);
+
+  //Caso o projeto não exista, retorno resposta de erro
+  if (!project) {
+    return res.status(400).json({ error: "Project does not exists!" });
+  }
+
+  //Caso o projeto exista, a requisição continua normalmente
+  return next();
+}
+
+//Verifica se o parametro {title} existe no corpo da requisição
+/**
+ * Um middleware local que será utilizado em todas rotas que recebem {title} como
+ * parametros no corpo da requisição. Se não existir retorne um erro,
+ * caso contrário permita a requisição continuar normalmente
+ * @param  {String} req.body.title Parametro {title} da requisição
+ * @return {JSON}      Retorna uma mensagem de erro informando que o parametro não existe
+ */
+
+function checkTitleExists(req, res, next) {
+  if (!req.body.title) {
+    return res.status(400).json({ error: "'title' is required" });
+  }
+
+  return next();
+}
+
+//Verifica se o parametro {id} existe no corpo da requisição (para Metodo POST)
+/**
+ * Um middleware que é utilizado na rota de criação de um projeto para verificar
+ * se o id foi declarado (usado em toda requisição que recebe o {id} no corpo da requisição).
+ * Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente
+ * @param  {String} req.body.id Parametro {id} da requisição
+ * @return {JSON}      Retorna uma mensagem de erro informando que o parametro não existe
+ */
+
+function checkIdExists(req, res, next) {
+  if (!req.body.id) {
+    return res.status(400).json({ error: "'id' is required" });
+  }
+
+  return next();
+}
+
+////ROTAS
 //Listar projetos
 /**
  * Listagem de todos os projetos e suas tarefas
@@ -45,7 +100,7 @@ server.get("/projects", (req, res) => {
  * @param  {String} req.body.title Nova tarefa recebida
  * @return {JSON}      Retorna a lista de projetos
  */
-server.post("/projects", (req, res) => {
+server.post("/projects", checkTitleExists, checkIdExists, (req, res) => {
   const { id, title } = req.body;
   //TODO verificar se os parametros existem
   //TODO verificar id duplicado antes da inserção
@@ -65,22 +120,23 @@ server.post("/projects", (req, res) => {
  * @param  {String} req.body.title Nova tarefa recebida
  * @return {JSON}      Retorna a lista de projetos
  */
-server.post("/projects/:id/tasks", (req, res) => {
-  //TODO - Validar existencia dos parametros
-  const { id } = req.params;
-  const { title } = req.body;
+server.post(
+  "/projects/:id/tasks",
+  checkProjectExists,
+  checkTitleExists,
+  (req, res) => {
+    //TODO - Validar existencia dos parametros
+    // Parametro id é validado no middleware
+    const { id } = req.params;
+    const { title } = req.body;
 
-  const project = projects.find(project => project.id === id);
+    const project = projects.find(project => project.id === id);
 
-  //Caso o projeto não exista, retorno resposta de erro
-  if (!project) {
-    return res.status(400).json({ error: "Projeto não existe, id inválido!" });
+    project.tasks.push(title);
+
+    return res.json(projects);
   }
-
-  project.tasks.push(title);
-
-  return res.json(projects);
-});
+);
 
 //Alterar do titulo de um projeto
 /**
@@ -91,24 +147,26 @@ server.post("/projects/:id/tasks", (req, res) => {
  * @param  {String} req.body.title Novo titulo para um projeto
  * @return {JSON}      Retorna a lista de projetos
  */
-server.put("/projects/:id", (req, res) => {
-  //TODO Validar a existencia dos parametros
-  const { id } = req.params;
-  const { title } = req.body;
+server.put(
+  "/projects/:id",
+  checkProjectExists,
+  checkTitleExists,
+  (req, res) => {
+    //TODO Validar a existencia dos parametros
+    // Parametro id é validado no middleware
+    // Parametro project é inserido no middleware
+    const { id } = req.params;
+    const { title } = req.body;
 
-  // Buscamos o projeto pelo id, se existir: alteramos
-  // Considerando que não há id duplicado, o find encontrará o elemento desejado (se existir)
-  const project = projects.find(project => project.id === id);
+    // Buscamos o projeto pelo id, se existir: alteramos (quando não existe é tratado no middleware)
+    // Considerando que não há id duplicado, o find encontrará o elemento desejado (se existir)
+    const project = projects.find(project => project.id === id);
 
-  //Caso o projeto não exista, retorno resposta de erro
-  if (!project) {
-    return res.status(400).json({ error: "Projeto não existe, id inválido!" });
+    project.title = title;
+
+    return res.json(projects);
   }
-
-  project.title = title;
-
-  return res.json(projects);
-});
+);
 
 //Deletar um projeto
 /**
@@ -117,22 +175,20 @@ server.put("/projects/:id", (req, res) => {
  * @param  {Number} req.params.id {id} de um projeto
  * @return {JSON}      Retorna um status de confirmação de exclusão
  */
-server.delete("/projects/:id", (req, res) => {
+server.delete("/projects/:id", checkProjectExists, (req, res) => {
   //TODO validar existencia do parametro
+  // Parametro id é validado no middleware
   const { id } = req.params;
 
   // Buscamos o projeto pelo id, se existir, retorno o index do elemento no array
+  // O caso do id não existir está sendo tratado pelo middleware
   // Considerando que não há id duplicado, o find encontrará o elemento desejado (se existir)
   const projectIndex = projects.findIndex(project => project.id === id);
-
-  //Caso o projeto não exista, retorno resposta de erro
-  if (projectIndex === -1) {
-    return res.status(400).json({ error: "Projeto não existe, id inválido!" });
-  }
 
   // Deleto o projeto do array
   projects.splice(projectIndex, 1);
 
+  // Retorna um status de confirmação de exclusão
   return res.send();
 });
 
