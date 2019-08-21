@@ -4,7 +4,7 @@ Crie uma aplicação do zero utilizando Express.
 
 Essa aplicação será utilizada para armazenar projetos e suas tarefas.
 
-Principais conceitos utilizados: API REST, Verbos HTTP, Rotas, Tipos de parâmetros de uma requisição, Middleware.
+**Principais conceitos utilizados**: API REST, Verbos HTTP, Rotas, Tipos de parâmetros de uma requisição, Middleware.
 
 ## Rotas
 
