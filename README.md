@@ -4,6 +4,8 @@ Crie uma aplicação do zero utilizando Express.
 
 Essa aplicação será utilizada para armazenar projetos e suas tarefas.
 
+Principais conceitos utilizados: API REST, Verbos HTTP, Rotas, Tipos de parâmetros de uma requisição, Middleware.
+
 ## Rotas
 
 - [x] `POST /projects`: A rota deve receber `id` e `title` dentro do corpo e cadastrar um novo projeto dentro de um array no seguinte formato: `{ id: "1", title: 'Novo projeto', tasks: [] }`; Certifique-se de enviar tanto o ID quanto o título do projeto no formato string com aspas duplas.
