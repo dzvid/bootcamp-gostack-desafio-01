@@ -56,5 +56,4 @@ o array de projetos deve ficar assim:
 - [x] Crie um middleware global chamado em todas requisições que imprime (`console.log`) uma contagem de quantas requisições foram feitas na aplicação até então;
 
 ## Entrega
-
-Esse desafio **não precisa ser entregue** e não receberá correção, mas você pode ver o resultado do código do desafio aqui: https://github.com/Rocketseat/bootcamp-gostack-desafio-01
+O resultado aqui nesse repositório foi o elaborado por mim. Esse desafio **não precisa ser entregue** e não receberá correção, mas você pode ver o resultado oficial do código elaborado pela staff da Rocketseat aqui: https://github.com/Rocketseat/bootcamp-gostack-desafio-01
