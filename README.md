@@ -1,5 +1,4 @@
-<img src="assets/images/logo_rocketseat.jpg" width="30" height="30" > 
-# Desafio 01. Conceitos do NodeJS
+# ![alt text](./assets/images/favicon.png "Rocketseat Logo") Desafio 01. Conceitos do NodeJS
 
 Crie uma aplicação do zero utilizando Express.
 
