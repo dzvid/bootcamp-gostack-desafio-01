@@ -10,6 +10,20 @@ server.use(express.json());
 // Um projeto tem o formato: { id: "1", title: 'Novo projeto', tasks: [] }
 const projects = [];
 
+//Middleware global
+// Armazena contagem de quantas requisições foram feitas na aplicação até então
+let requestsCounter = 0;
+
+/**
+ * Um middleware global chamado em todas requisições que imprime (console.log) uma
+ * contagem de quantas requisições foram feitas na aplicação até então;
+ */
+server.use((req, res, next) => {
+  requestsCounter++;
+  console.log(`Total of requests: ${requestsCounter}`);
+  return next();
+});
+
 //ROTAS
 //Listar projetos
 /**
